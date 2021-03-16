@@ -1,0 +1,15 @@
+.navbar {
+    padding: 20px;
+    top: 0;
+}
+
+#login {
+    padding-top: 300px;
+    margin: auto;
+    /* padding-left: 350px; */
+    /* padding-right: 350px; */
+}
+
+.submit {
+    width: 100%;
+}
