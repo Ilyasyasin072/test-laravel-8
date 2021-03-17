@@ -11,6 +11,7 @@ use App\Models\UserDetail;
 use Validator;
 use Hash;
 use Str;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -19,7 +20,6 @@ class AuthController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth-middle')->only('details');
     }
 
     public function register(Request $request)
@@ -58,8 +58,14 @@ class AuthController extends Controller
         return $response;
     }
 
+    public function login() {
 
-    public function login()
+        return view('auth.login')->render();
+
+    }
+
+
+    public function checkLogin(Request $request)
     {
 
         try {
@@ -68,13 +74,13 @@ class AuthController extends Controller
             }
 
             $user = auth()->user();
-
+            $user->save();
+            Auth::login($user);
             if ($user) {
                 $status = UserDetail::find($user->id);
 
                 if ($status->status == 'active') {
-
-                    return response()->json(['users' => $user], 200);
+                    return redirect()->route('home')->with( ['user' => $user] );
 
                 } else {
 
@@ -87,6 +93,15 @@ class AuthController extends Controller
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->flush();
+        $request->session()->regenerate();
+
+        return redirect('/');
     }
 
     public function index()

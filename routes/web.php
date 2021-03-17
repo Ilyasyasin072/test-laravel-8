@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Dashboard\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +14,20 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 
-Route::get('/home', function () {
-    return view('master.index');
+Route::group(['namespace' => 'Dashboard'], function($router) {
+    // $router->get('/home', function() {
+    //     return view('dashboard.home');
+    // })->name('home');
+    $router->get('/home', [DashboardController::class, 'index'])->name('home');
 });
 
-Route::get('/', function () {
-    return view('auth.login');
+Route::group(['namespace' => 'Auth'], function($router) {
+    $router->get('/', [AuthController::class, 'login']);
+});
+
+Route::group(['namespace' => 'Auth'], function($router) {
+    $router->post('/register', [AuthController::class, 'register']);
+    $router->post('/checkLogin', [AuthController::class, 'checkLogin']);
+    $router->get('/details', [AuthController::class, 'details']);
+    $router->get('/logout', [AuthController::class, 'logout']);
 });

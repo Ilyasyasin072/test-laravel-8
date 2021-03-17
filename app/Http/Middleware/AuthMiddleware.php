@@ -17,10 +17,15 @@ class AuthMiddleware extends Middleware
      */
 
     protected $guards = [];
-    public function handle($request, Closure $next, ...$guards)
+    public function handle($request, Closure $next, $guard = null)
     {
-        // return $next($request);
-        $user = $this->guards;
-        dd($user);
+
+        // var_dump(Auth::user()); die;
+        if(Auth::user()) {
+            return redirect()->back();
+        } else {
+            return redirect('home');
+        }
+        return $next($request);
     }
 }

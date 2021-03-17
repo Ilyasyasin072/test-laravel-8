@@ -19,12 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return 'ini';
 });
 
-Route::group(['namespace' => 'Auth'], function($router) {
-    $router->post('/register', [AuthController::class, 'register']);
-    $router->post('/login', [AuthController::class, 'login']);
-    $router->get('/details', [AuthController::class, 'details']);
-});
-
 Route::group(['prefix' => 'v1'], function($router) {
 
     $router->group(['namespace' => 'Auth', 'prefix' => 'users'], function($router) {

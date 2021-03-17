@@ -1,38 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/custome.css">
-    <title>Login</title>
-</head>
+@include('includes/header')
 
 <body>
     <div class="container" id="login">
-        <div class="wrapper"><div class="card">
+        <div class="wrapper">
+            <div class="card">
+                <div class="card-header">
+                    <div class="col-md-4">
+                        <h3><strong>Login</strong></h3>
+                    </div>
+                    <div class="col-lg-7 col-md-3">
+                        <p> Simple Apps</p>
+                    </div>
+                </div>
                 <div class="card-body">
-                    <form action="">
+                    <form id="form-login" method="POST">
+                        {{-- {{ csrf_field() }} --}}
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Email">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Password">
+                            <input type="password" class="form-control" id="password" name="password"
+                                placeholder="Password">
                         </div>
                         <div class="form-group">
-                            <a href="#" class="btn btn-primary btn-sm submit">Submit</a>
+                            <button type="submit" class="btn btn-login">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="assets/js/bootstrap.js"></script>
-</body>
 
-</html>
+    @include('includes/footer')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $("#form-login").submit(function(e) {
+                e.preventDefault();
+                const email = $('#email').val();
+                const password = $('#password').val();
+                console.log(email, password);
+                const url = "{{ url('/checkLogin') }}";
+                var datastring = $("#form-login").serialize();
+                // console.log(email)
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        email: email,
+                        password: password
+                    },
+                    // data: datastring,
+                    dataType: "html",
+                    // dataType: 'JSON',
+                    success: function(data) {
+                        window.location.href = "{{ url('/home') }}";
+                        // console.log(data);
+                    },
+                    error: function(err) {
+                        // console.log(err);
+                    }
+                })
+            })
+        })
+    </script>

@@ -1,15 +1,41 @@
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden
+}
+
 .navbar {
-    padding: 20px;
-    top: 0;
+    background-color: #355876;
+    margin-bottom: 20px;
+    padding: 30px;
+}
+
+.navbar.transparent.navbar-inverse .navbar-inner {
+    border-width: 0px;
+    -webkit-box-shadow: 0px 0px;
+    box-shadow: 0px 0px;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0%, rgba(0, 0, 0, 0.00)), color-stop( 100%, rgba(0, 0, 0, 0.00)));
+    background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.00) 100%);
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.00) 100%);
 }
 
 #login {
-    padding-top: 300px;
-    margin: auto;
-    /* padding-left: 350px; */
-    /* padding-right: 350px; */
+    margin-top: 300px;
 }
 
-.submit {
+.card-header {
+    background-color: #355876;
+    color: white;
+}
+
+.btn-login{
+    background-color: #355876;
+    color: white;
     width: 100%;
 }
+
