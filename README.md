@@ -7,6 +7,13 @@
     - create One table relation with table users (with migration)
 ## Result Login Page
 
+### Login
+![alt text](https://github.com/Ilyasyasin072/test-laravel-8/blob/main/public/assets/img/result/login.png)
+### Dashboard 
+![alt text](https://github.com/Ilyasyasin072/test-laravel-8/blob/main/public/assets/img/result/dashboard.png)
+### All User
+![alt text](https://github.com/Ilyasyasin072/test-laravel-8/blob/main/public/assets/img/result/user_lists.png)
+
 ## Result Rest Api
 
 - Request
