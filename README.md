@@ -16,6 +16,8 @@
 
 ## Result Rest Api
 
+### GET
+
 - Request
     - Method: 'GET'
     - EndPoint: '/api/v1/manage/users
@@ -40,22 +42,93 @@
                 "updated_at": null
             }
         },
-        {
-            "user_id": 2,
-            "status": "active",
-            "position": "IT",
-            "created_at": "2021-03-16T06:10:30.000000Z",
-            "updated_at": "2021-03-16T06:10:30.000000Z",
-            "user": {
-                "id": 2,
-                "name": "aa",
-                "email": "aa@gmail.com",
-                "email_verified_at": null,
-                "created_at": "2021-03-16T06:31:54.000000Z",
-                "updated_at": "2021-03-16T06:31:54.000000Z"
-            }
-        }
     ],
     "code": 200
 }
 ```
+
+### POST
+- Request
+    - Method: 'POST'
+    - EndPoint: '/api/v1/manage/users/store
+    - Body : user_id, status, position
+
+- Result
+```
+{
+    "message": "POST",
+    "data": {
+        "user_id": 1,
+        "status": "active",
+        "position": "Management",
+        "updated_at": "2021-03-17T07:53:04.000000Z",
+        "created_at": "2021-03-17T07:53:04.000000Z"
+    },
+    "code": 200
+}
+```
+
+### PUT
+
+- Request
+    - Method: 'PUT'
+    - EndPoint: '/api/v1/manage/users/update/1
+    - Body : user_id, status, position
+
+- Result
+```
+{
+    "message": "PUT",
+    "data": {
+        "user_id": 1,
+        "status": "active",
+        "position": "Management IT",
+        "created_at": "2021-03-17T07:53:04.000000Z",
+        "updated_at": "2021-03-17T07:54:17.000000Z"
+    },
+    "code": 200
+}
+```
+
+### GET BY ID
+
+- Request
+    - Method: 'GET'
+    - EndPoint: '/api/v1/manage/users/show/1
+    - Body : user_id, status, position
+
+- Result
+```
+{
+    "message": "GET",
+    "data": {
+        "user_id": 1,
+        "status": "active",
+        "position": "Management IT",
+        "created_at": "2021-03-17T07:53:04.000000Z",
+        "updated_at": "2021-03-17T07:54:17.000000Z"
+    },
+    "code": 200
+}
+```
+
+### DELETE
+
+- Request
+    - Method: 'DELETE'
+    - EndPoint: '/api/v1/manage/users/delete/1
+    - Body : user_id, status, position
+
+- Result
+```
+{
+    "message": "GET",
+    "data": {
+        "user_id": 1,
+        "status": "active",
+        "position": "Management IT",
+        "created_at": "2021-03-17T07:53:04.000000Z",
+        "updated_at": "2021-03-17T07:54:17.000000Z"
+    },
+    "code": 200
+}
