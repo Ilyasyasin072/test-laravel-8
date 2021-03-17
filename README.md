@@ -95,7 +95,6 @@
 - Request
     - Method: 'GET'
     - EndPoint: '/api/v1/manage/users/show/1
-    - Body : user_id, status, position
 
 - Result
 ```
@@ -117,7 +116,6 @@
 - Request
     - Method: 'DELETE'
     - EndPoint: '/api/v1/manage/users/delete/1
-    - Body : user_id, status, position
 
 - Result
 ```
