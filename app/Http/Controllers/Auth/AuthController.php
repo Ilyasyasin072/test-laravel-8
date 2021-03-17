@@ -20,6 +20,7 @@ class AuthController extends Controller
 
     public function __construct()
     {
+        $this->middleware('auth-middle')->except(['login', 'checkLogin', 'index_user']);
     }
 
     public function register(Request $request)
@@ -104,17 +105,11 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function index()
+    public function index_data()
     {
 
         $users = User::UserJson();
 
         return $this->responseSuccess('GET', $users, 200);
-    }
-
-    public function details()
-    {
-        $user = Auth::user();
-        return response()->json(['success' => $user]);
     }
 }

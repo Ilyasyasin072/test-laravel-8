@@ -20,13 +20,24 @@ class AuthMiddleware extends Middleware
     protected $guards = [];
     public function handle($request, Closure $next, $guard = null)
     {
+        if (Auth::guard($guard)->check()) {
 
-        if (Auth::guard($guard)->check()){
             $users = Auth::user()->id;
+
+            \Auth::loginUsingId($users);
+
             $user_status = UserDetail::find($users);
-            return $next($request);
+
+            if ($user_status->status == 'active') {
+
+                return $next($request);
+
+            } else {
+
+                return redirect('/');
+
+            }
         }
-        // abort(403);
         return redirect('/');
     }
 }

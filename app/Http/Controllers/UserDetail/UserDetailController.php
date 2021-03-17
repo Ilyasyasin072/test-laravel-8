@@ -13,11 +13,12 @@ class UserDetailController extends Controller
     use ApiResponser;
 
     public function __construct()
+
     {
 
     }
 
-    public function index() {
+    public function index_data() {
 
         try {
 

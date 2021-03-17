@@ -2,7 +2,6 @@
     <nav class="navbar navbar-expand-lg navbar-light smart-scroll" id="menu">
         <div class="container">
             <a class="navbar-brand" href="#">
-                {{-- <img src="assets/img/icon/logo2.png" height="50" width="50" alt=""> --}}
                 <h2 style="color: white"><strong>Welcome</strong>&nbsp;Apps</h2>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -12,17 +11,24 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
                     @if(Auth::user())
-                    <a class="nav-item nav-link active btn-ripple" href="#" style="color: #fff;">Home <span
+                    <a class="nav-item nav-link active btn-ripple" href="{{ url('home') }}" style="color: #fff;">Home <span
                             class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link btn-ripple" href="#" style="color: #fff;">Contact</a>
-                    <a class="nav-item nav-link btn-ripple" href="#" style="color: #fff;">About</a>
-                    <a class="nav-item nav-link btn-ripple" href="#"
-                        style="color: #fff;">{{ (Auth::user() ? Auth::user()->name : 'GUEST') }}</a>
-                    <a class="nav-item nav-link btn-ripple" href="{{ url("logout") }}"
-                        style="color: #fff;">Logout</a>
+                    <a class="nav-item nav-link btn-ripple" href="{{ url('users') }}" style="color: #fff;">Manage Users</a>
+                    <li class="dropdown"> <a href="javascript:void(0)"
+                            class="btn btn-secondary services dropdown-toggle" data-toggle="dropdown" role="button"
+                            aria-expanded="false">Setting <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Username : {{ Auth::user()->name }}</h6>
+                                    <hr>
+                                    <a href="{{ url('logout') }}">Logout</a>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
                     @else
                     <a class="nav-item nav-link btn-ripple" href="/" style="color: #fff;">Login</a>
-
                     @endif
                 </div>
             </div>

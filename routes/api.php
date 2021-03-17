@@ -15,18 +15,18 @@ use App\Http\Controllers\UserDetail\UserDetailController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return 'ini';
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return 'ini';
+// });
 
 Route::group(['prefix' => 'v1'], function($router) {
 
     $router->group(['namespace' => 'Auth', 'prefix' => 'users'], function($router) {
-        $router->get('/', [AuthController::class, 'index']);
+        $router->get('/', [AuthController::class, 'index_data']);
     });
 
     $router->group(['namespace' => 'UserDetail', 'prefix' => 'manage/users'], function($router) {
-        $router->get('/', [UserDetailController::class, 'index']);
+        $router->get('/', [UserDetailController::class, 'index_data']);
         $router->post('/store', [UserDetailController::class, 'store']);
         $router->put('/update/{id}', [UserDetailController::class, 'update']);
         $router->get('/show/{id}', [UserDetailController::class, 'show']);

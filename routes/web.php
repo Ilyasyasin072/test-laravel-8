@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\User\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,20 +15,24 @@ use App\Http\Controllers\Dashboard\DashboardController;
 |
 */
 
-Route::group(['namespace' => 'Dashboard', 'middleware' => 'history'], function($router) {
-    // $router->get('/home', function() {
-    //     return view('dashboard.home');
-    // })->name('home');
+Route::group(['namespace' => 'Dashboard', 'middleware' => 'history'], function ($router) {
     $router->get('/home', [DashboardController::class, 'index'])->name('home');
 });
 
-Route::group(['namespace' => 'Auth',  'middleware' => 'history'], function($router) {
+Route::group(['namespace' => 'Auth',  'middleware' => 'history'], function ($router) {
     $router->get('/', [AuthController::class, 'login']);
 });
+Route::group(['namespace' => 'User'], function ($router) {
+    $router->get('/users', [UserController::class, 'index'])->name('index');
+});
 
-Route::group(['namespace' => 'Auth'], function($router) {
+
+Route::group(['namespace' => 'Auth'], function ($router) {
     $router->post('/register', [AuthController::class, 'register']);
     $router->post('/checkLogin', [AuthController::class, 'checkLogin']);
-    $router->get('/details', [AuthController::class, 'details']);
     $router->get('/logout', [AuthController::class, 'logout']);
 });
+
+// $router->group(['namespace' => 'UserDetail'], function($router) {
+//     $router->get('/manage/users', [UserDetailController::class, 'index']);
+// });
