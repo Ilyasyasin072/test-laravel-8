@@ -3,6 +3,7 @@
 <body>
     <div class="container" id="login">
         <div class="wrapper">
+            <div class="status"></div>
             <div class="card">
                 <div class="card-header">
                     <div class="col-md-4">
@@ -63,7 +64,28 @@
                         // console.log(data);
                     },
                     error: function(err) {
-                        // console.log(err);
+
+                        $('.status').empty();
+
+                        if(err.status === 401) {
+                            var res = JSON.parse(err.responseText)
+                            var output = '<div class="alert alert-danger" role="alert">'+res.error+'</div>';
+                            $('.status').html(output);
+                        }
+
+                        if (err.status === 400) {
+                            var res = JSON.parse(err.responseText)
+                            console.log(res);
+                            var output = '<div class="alert alert-danger" role="alert">'+res.error+'</div>';
+                            $('.status').html(output);
+                        }
+
+                        if (err.status === 500) {
+                            var res = JSON.parse(err.responseText)
+                            console.log(res);
+                            var output = '<div class="alert alert-danger" role="alert">'+res.error+'</div>';
+                            $('.status').html(output);
+                        }
                     }
                 })
             })

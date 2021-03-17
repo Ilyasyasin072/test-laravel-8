@@ -71,7 +71,7 @@ class AuthController extends Controller
 
         try {
             if (!Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
-                return response()->json(['error' => 'Check Your Email and Password'], 400);
+                return response()->json(['error' => 'Check Your Email and Password'], 401);
             }
 
             $user = auth()->user();
@@ -85,11 +85,9 @@ class AuthController extends Controller
 
                 } else {
 
-                    return response()->json(['failed' => 'Your Account Non Active'], 401);
+                    return response()->json(['error' => 'Your Account Non Active'], 400);
 
                 }
-            } else {
-                return response()->json(['failed' => 'Your Dont Have Account'], 401);
             }
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()], 500);
