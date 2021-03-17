@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use App\Models\UserDetail;
 use App\Http\Traits\ApiResponser;
+use Illuminate\Database\Eloquent\Builder;
 
 class UserController extends Controller
 {

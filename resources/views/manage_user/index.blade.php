@@ -2,12 +2,11 @@
 
 @section('content')
 <div class="col-sm-12 col-md-12 col-xs-12">
-    {{-- <div class="row"> --}}
         <div class="card">
             <div class="card-header">
                 <h3>
                     <Strong>Users List</Strong>
-                </h3>   
+                </h3>
                 <p>all data users with user detail</p>
             </div>
 
@@ -41,7 +40,5 @@
                 </table>
             </div>
         </div>
-
-    {{-- </div> --}}
 </div>
 @endsection
