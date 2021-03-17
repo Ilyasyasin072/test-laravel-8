@@ -75,14 +75,12 @@
 
                         if (err.status === 400) {
                             var res = JSON.parse(err.responseText)
-                            console.log(res);
                             var output = '<div class="alert alert-danger" role="alert">'+res.error+'</div>';
                             $('.status').html(output);
                         }
 
                         if (err.status === 500) {
                             var res = JSON.parse(err.responseText)
-                            console.log(res);
                             var output = '<div class="alert alert-danger" role="alert">'+res.error+'</div>';
                             $('.status').html(output);
                         }
