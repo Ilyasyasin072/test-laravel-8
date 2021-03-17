@@ -14,14 +14,14 @@ use App\Http\Controllers\Dashboard\DashboardController;
 |
 */
 
-Route::group(['namespace' => 'Dashboard'], function($router) {
+Route::group(['namespace' => 'Dashboard', 'middleware' => 'history'], function($router) {
     // $router->get('/home', function() {
     //     return view('dashboard.home');
     // })->name('home');
     $router->get('/home', [DashboardController::class, 'index'])->name('home');
 });
 
-Route::group(['namespace' => 'Auth'], function($router) {
+Route::group(['namespace' => 'Auth',  'middleware' => 'history'], function($router) {
     $router->get('/', [AuthController::class, 'login']);
 });
 

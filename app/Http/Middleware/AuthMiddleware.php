@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use App\Models\UserDetail;
 
 class AuthMiddleware extends Middleware
 {
@@ -20,12 +21,12 @@ class AuthMiddleware extends Middleware
     public function handle($request, Closure $next, $guard = null)
     {
 
-        // var_dump(Auth::user()); die;
-        if(Auth::user()) {
-            return redirect()->back();
-        } else {
-            return redirect('home');
+        if (Auth::guard($guard)->check()){
+            $users = Auth::user()->id;
+            $user_status = UserDetail::find($users);
+            return $next($request);
         }
-        return $next($request);
+        // abort(403);
+        return redirect('/');
     }
 }
