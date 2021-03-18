@@ -1,31 +1,32 @@
 @include('includes/header')
 
 <body>
-    <div class="container" id="login">
-        <div class="wrapper">
-            <div class="status"></div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="col-md-4">
-                        <h3><strong>Login</strong></h3>
+    <div class="container">
+        <div class="row login">
+            <div class="col-md-6 align-middle">
+                <h3> Simple Apps</h3>
+                <p id="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium pariatur perferendis tenetur officiis rem. Repudiandae rerum iure a commodi aliquid alias, corporis libero fugit esse voluptatem iusto magnam rem! Ratione?</p>
+            </div>
+
+            <div class="col-md-6 text-center">
+                <div class="status"></div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 style="width: 100%; text-align: left;"><strong>Login</strong></h3>
                     </div>
-                    <div class="col-lg-7 col-md-3">
-                        <p> Simple Apps</p>
+                    <div class="card-body text-center">
+                        <form id="form-login" method="POST">
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-login">Submit</button>
+                            </div>
+                        </form>
                     </div>
-                </div>
-                <div class="card-body">
-                    <form id="form-login" method="POST">
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="password" name="password"
-                                placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-login">Submit</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -34,8 +35,7 @@
     @section('scripts')
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.js"></script>
-    @stack('js')
-    @show
+    @stack('js') @show
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -71,21 +71,21 @@
 
                         $('.status').empty();
 
-                        if(err.status === 401) {
+                        if (err.status === 401) {
                             var res = JSON.parse(err.responseText)
-                            var output = '<div class="alert alert-danger" role="alert">'+res.error+'</div>';
+                            var output = '<div class="alert alert-danger" role="alert">' + res.error + '</div>';
                             $('.status').html(output);
                         }
 
                         if (err.status === 400) {
                             var res = JSON.parse(err.responseText)
-                            var output = '<div class="alert alert-danger" role="alert">'+res.error+'</div>';
+                            var output = '<div class="alert alert-danger" role="alert">' + res.error + '</div>';
                             $('.status').html(output);
                         }
 
                         if (err.status === 500) {
                             var res = JSON.parse(err.responseText)
-                            var output = '<div class="alert alert-danger" role="alert">'+res.error+'</div>';
+                            var output = '<div class="alert alert-danger" role="alert">' + res.error + '</div>';
                             $('.status').html(output);
                         }
                     }

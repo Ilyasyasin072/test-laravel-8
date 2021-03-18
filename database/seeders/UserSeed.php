@@ -21,7 +21,7 @@ class UserSeed extends Seeder
     {
         $users = new User();
         $users->name = 'Example';
-        $users->email = 'example@gmail.com';
+        $users->email = 'example2@gmail.com';
         $users->password = Hash::make('12345678');
 
         $users->save();
