@@ -17,7 +17,7 @@
                         <ul class="dropdown-menu" role="menu">
                             <div class="card setting">
                                 <div class="card-body">
-                                    <h6>Username : {{ Auth::user()->name }}</h6>
+                                    <h6>Username :&nbsp;{{ Auth::user()->name }}</h6>
                                     <hr>
                                     <a href="{{ url('logout') }}">Logout</a>
                                 </div>
