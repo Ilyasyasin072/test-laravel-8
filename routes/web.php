@@ -32,7 +32,3 @@ Route::group(['namespace' => 'Auth'], function ($router) {
     $router->post('/checkLogin', [AuthController::class, 'checkLogin']);
     $router->get('/logout', [AuthController::class, 'logout']);
 });
-
-// $router->group(['namespace' => 'UserDetail'], function($router) {
-//     $router->get('/manage/users', [UserDetailController::class, 'index']);
-// });

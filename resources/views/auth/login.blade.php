@@ -15,7 +15,6 @@
                 </div>
                 <div class="card-body">
                     <form id="form-login" method="POST">
-                        {{-- {{ csrf_field() }} --}}
                         <div class="form-group">
                             <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                         </div>
@@ -32,7 +31,12 @@
         </div>
     </div>
 
-    @include('includes/footer')
+    @section('scripts')
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    @stack('js')
+    @show
+
     <script type="text/javascript">
         $(document).ready(function() {
             $.ajaxSetup({
@@ -89,3 +93,7 @@
             })
         })
     </script>
+
+</body>
+
+</html>
