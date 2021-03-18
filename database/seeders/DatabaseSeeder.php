@@ -12,9 +12,11 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+
+    protected $toTruncate = ['users'];
+
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
         $this->call([
             UserSeed::class,
         ]);

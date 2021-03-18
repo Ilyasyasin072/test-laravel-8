@@ -16,18 +16,19 @@ class UserSeed extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
         $users = new User();
-        $users->name = 'adasd';
-        $users->email = 'aaa@gmail.com';
-        $users->password = '1234567';
+        $users->name = 'Example';
+        $users->email = 'example@gmail.com';
+        $users->password = Hash::make('12345678');
 
         $users->save();
 
         $userD = new UserDetail();
         $userD->user_id = $users->id;
-        $userD->position = 'asd';
+        $userD->position = 'MANAGER IT';
         $userD->status = 'active';
 
         $userD->save();
