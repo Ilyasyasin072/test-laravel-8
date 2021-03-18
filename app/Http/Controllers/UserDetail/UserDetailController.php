@@ -23,10 +23,10 @@ class UserDetailController extends Controller
         try {
 
             // With Eagerloading
-            $user_detail = UserDetail::with('user')->get();
+            // $user_detail = UserDetail::with('user')->get();
 
             // With Scope On Model
-            // $user_detail = UserDetail::UserDetailJson();
+            $user_detail = UserDetail::UserDetailJson();
 
             $response = $this->responseSuccess('GET', $user_detail, 200);
 

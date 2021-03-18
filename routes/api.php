@@ -27,7 +27,7 @@ Route::group(['prefix' => 'v1'], function($router) {
 
     $router->group(['namespace' => 'UserDetail', 'prefix' => 'manage/users'], function($router) {
         $router->get('/', [UserDetailController::class, 'index_data']);
-        $router->post('/store', [UserDetailController::class, 'store']);
+        $router->post('/store', [UserDetailController::class, 'store'])->name('manage-store');
         $router->put('/update/{id}', [UserDetailController::class, 'update']);
         $router->get('/show/{id}', [UserDetailController::class, 'show']);
         $router->delete('/delete/{id}', [UserDetailController::class, 'delete']);
