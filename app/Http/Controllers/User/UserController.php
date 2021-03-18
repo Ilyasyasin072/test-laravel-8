@@ -19,7 +19,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $userDetail = UserDetail::with('user')->get();
+        $userDetail = UserDetail::with('user')->paginate(2);
         return view('manage_user.index', [
             'user' => $userDetail,
         ])->render();
