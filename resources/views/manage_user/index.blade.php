@@ -2,6 +2,10 @@
 
 @section('content')
 <div class="col-sm-12 col-md-12 col-xs-12">
+    <div class="jumbotron">
+        <h1>Management Users</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, accusamus animi voluptatibus praesentium excepturi dolore nemo, dolor eveniet vel quasi delectus ipsum nihil quibusdam quisquam accusantium ullam molestiae recusandae iste.</p>
+      </div>
         <div class="card">
             <div class="card-header">
                 <h3>
