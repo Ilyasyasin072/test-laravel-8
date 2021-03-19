@@ -17,7 +17,7 @@
 - php artisan db:seed
 
 ### Login
-![alt text](https://github.com/Ilyasyasin072/test-laravel-8/blob/main/public/assets/img/result/login.png)
+![alt text](https://github.com/Ilyasyasin072/test-laravel-8/blob/main/public/assets/img/result/login1.png)
 ### Dashboard 
 ![alt text](https://github.com/Ilyasyasin072/test-laravel-8/blob/main/public/assets/img/result/dashboard.png)
 ### All User
