@@ -7,6 +7,15 @@
     - create One table relation with table users (with migration)
 ## Result Login Page
 
+## Build
+
+- git clone https://github.com/Ilyasyasin072/test-laravel-8.git
+- composer install or update
+- cp .env-example .env
+- modify database
+- php artisan migrate
+- php artisan db:seed
+
 ### Login
 ![alt text](https://github.com/Ilyasyasin072/test-laravel-8/blob/main/public/assets/img/result/login.png)
 ### Dashboard 
