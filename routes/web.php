@@ -20,7 +20,7 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => 'history'], function (
 });
 
 Route::group(['namespace' => 'Auth',  'middleware' => 'history'], function ($router) {
-    $router->get('/', [AuthController::class, 'login']);
+    $router->get('/', [AuthController::class, 'login'])->name('login');
 });
 Route::group(['namespace' => 'User',  'middleware' => 'history'], function ($router) {
     $router->get('/users', [UserController::class, 'index'])->name('index');
